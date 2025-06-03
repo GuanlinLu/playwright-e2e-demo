@@ -28,21 +28,21 @@ jobs:
             -v ${{ github.workspace }}/test-output:/app/test-output \
             playwright-e2e-demo
 
-      - name: 🐞 Debug: List test-output structure
+      - name: Debug: List test-output structure
         if: always()
         run: |
-          echo "🗂️ test-output 内容如下："
-          ls -R test-output || echo "❌ test-output 目录不存在"
+          echo "Listing test-output directory:"
+          ls -R test-output || echo "test-output not found"
 
-      - name: ✅ Check if report was generated
+      - name: Check if report was generated
         if: always()
         run: |
           if [ ! -d "test-output/report" ] || [ -z "$(ls -A test-output/report)" ]; then
-            echo "❌ 报告目录 test-output/report 缺失或为空，无法上传。"
+            echo "Report directory is missing or empty."
             exit 1
           fi
 
-      - name: 📦 Upload Playwright HTML Report
+      - name: Upload Playwright HTML Report
         if: always()
         uses: actions/upload-artifact@v3
         with:

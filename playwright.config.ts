@@ -7,6 +7,7 @@ export default defineConfig({
   use: {
     screenshot: 'on',
     trace: 'on',
+    video: 'retain-on-failure',
     headless: true, // usually headless in Docker
   },
 });

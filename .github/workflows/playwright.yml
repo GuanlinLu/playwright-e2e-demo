@@ -26,24 +26,10 @@ jobs:
           mkdir -p test-output
           docker run --rm -v ${{ github.workspace }}/test-output:/app/test-output playwright-e2e-demo
 
-      - name: Debug List test-output structure
+      - name: Upload Playwright HTML Report (with trace)
         if: always()
-        run: |
-          echo "Listing test-output directory:"
-          ls -R test-output || echo "test-output not found"
-
-      - name: Check if report was generated
-        if: always()
-        run: |
-          if [ ! -d "test-output/report" ] || [ -z "$(ls -A test-output/report)" ]; then
-            echo "Report directory is missing or empty."
-            exit 1
-          fi
-
-      - name: Upload Playwright HTML Report
-        if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: playwright-html-report
-          path: test-output/report/
+          path: test-output/playwright-report/
           retention-days: 7

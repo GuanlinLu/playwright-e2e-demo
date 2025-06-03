@@ -24,11 +24,9 @@ jobs:
       - name: Run Playwright tests in Docker
         run: |
           mkdir -p test-output
-          docker run --rm \
-            -v ${{ github.workspace }}/test-output:/app/test-output \
-            playwright-e2e-demo
+          docker run --rm -v ${{ github.workspace }}/test-output:/app/test-output playwright-e2e-demo
 
-      - name: Debug: List test-output structure
+      - name: Debug List test-output structure
         if: always()
         run: |
           echo "Listing test-output directory:"

@@ -21,3 +21,5 @@ This project showcases an end-to-end (E2E) testing workflow using [Playwright](h
 ```bash
 # Headed mode with live browser and full report
 npx playwright test --ui
+
+#Rebuild test

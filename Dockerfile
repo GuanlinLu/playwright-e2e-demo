@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/playwright:v1.44.0-jammy
+FROM mcr.microsoft.com/playwright:v1.52.0-jammy
+# Use the official Playwright image with Node.js and browsers installed
 
 WORKDIR /app
 
